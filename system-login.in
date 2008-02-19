@@ -15,9 +15,15 @@ account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
  
 password	include		system-auth
  
+#if HAVE_SELINUX
+session		required	pam_selinux.so close
+#endif
 #if HAVE_ENV			
 session		required	pam_env.so DEBUG
 #endif				
 session		optional	pam_lastlog.so DEBUG
 session		include		system-auth
+#if HAVE_SELINUX
+session		required	pam_selinux.so multiple open
+#endif
  
