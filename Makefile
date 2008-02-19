@@ -22,6 +22,16 @@ endif
 
 all: $(PAMD)
 
+PACKAGE=pambase
+ifeq "$(VERSION)" ""
+VERSION = $(shell date +"%Y%m%d")
+endif
+
+dist: $(PACKAGE)-$(VERSION).tar.bz2
+
+$(PACKAGE)-$(VERSION).tar.bz2: $(shell git ls-files)
+	git archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | bzip2 > $@
+
 $(PAMD): %: %.in
 	$(CPP) -traditional-cpp -P $(PAMFLAGS) $< -o $@
 	sed -i -e '/^$$/d' -e '/^\/\//d' $@
