@@ -1,4 +1,6 @@
 system-auth
 system-login
+system-local-login
+system-remote-login
 other
 pambase-*.tar.bz2
