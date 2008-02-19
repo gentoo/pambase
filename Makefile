@@ -3,7 +3,7 @@
 CPP=cpp
 
 # The pam.d file to create
-PAMD=system-auth system-login
+PAMD=system-auth system-login other
 
 # Get this by default, even if I'd like avoid it...
 ifeq "$(IMPLEMENTATION)" ""
