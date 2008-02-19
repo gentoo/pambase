@@ -1,0 +1,20 @@
+// Only use_authtok (authentication token) when using cracklib or some other module
+// that checks for passwords.
+#if defined(HAVE_CRACKLIB)
+# define AUTHTOK use_authtok
+#else
+# define AUTHTOK
+#endif
+
+// Define DEBUG to an empty string unless it was required by the user
+#ifndef DEBUG
+#define DEBUG
+#endif
+
+#ifndef UNIX_EXTENDED_ENCRYPTION
+#define UNIX_EXTENDED_ENCRYPTION
+#endif
+
+#ifndef LIKEAUTH
+#define LIKEAUTH
+#endif

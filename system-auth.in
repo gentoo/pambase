@@ -1,0 +1,22 @@
+#if HAVE_ENV
+auth		required	pam_env.so DEBUG
+#endif
+auth		sufficient	pam_unix.so try_first_pass LIKEAUTH nullok DEBUG
+auth		required	pam_deny.so
+ 
+account		required	pam_unix.so DEBUG
+ 
+#if HAVE_CRACKLIB
+password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 try_first_pass retry=3 DEBUG
+#endif
+password	sufficient	pam_unix.so try_first_pass AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
+password	required	pam_deny.so
+ 
+#if HAVE_LIMITS
+session		required	pam_limits.so DEBUG
+#endif
+#if HAVE_ENV
+session		required	pam_env.so DEBUG
+#endif
+session		required	pam_unix.so DEBUG
+ 

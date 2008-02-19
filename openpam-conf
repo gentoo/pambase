@@ -1,0 +1,3 @@
+#if defined(HAVE_CRACKLIB)
+# error "pam_cracklib is only supported with Linux-PAM"
+#endif

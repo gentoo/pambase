@@ -1,0 +1,23 @@
+#if HAVE_TALLY
+auth		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
+#endif				
+auth		required	pam_shells.so DEBUG
+auth		required	pam_nologin.so DEBUG
+auth		include		system-auth
+ 				
+#if HAVE_ACCESS		
+account		required	pam_access.so DEBUG
+#endif				
+account		include		system-auth
+#if HAVE_TALLY		
+account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
+#endif				
+ 
+password	include		system-auth
+ 
+#if HAVE_ENV			
+session		required	pam_env.so DEBUG
+#endif				
+session		optional	pam_lastlog.so DEBUG
+session		include		system-auth
+ 

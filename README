@@ -1,0 +1,8 @@
+This repository contains the PAM configuration base for Gentoo Linux
+and Gentoo FreeBSD, this mostly means the system-auth and system-login
+configuration file that provides the basic support for generical
+authentication for services, and console login (on tty or on various
+desktop managers).
+
+The Makefile manages the choice of optional features that will be
+enabled in the final file.
