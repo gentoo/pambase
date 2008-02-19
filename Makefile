@@ -16,6 +16,10 @@ ifeq "$(CRACKLIB)" "yes"
 PAMFLAGS += -DHAVE_CRACKLIB=1
 endif
 
+ifeq "$(DEBUG)" "yes"
+PAMFLAGS += -DDEBUG=debug
+endif
+
 all: $(PAMD)
 
 $(PAMD): %: %.in
