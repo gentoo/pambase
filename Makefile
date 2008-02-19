@@ -22,6 +22,10 @@ endif
 
 all: $(PAMD)
 
+install: $(PAMD)
+	install -d "$(DESTDIR)/etc/pam.d"
+	install -m0644 $(PAMD) "$(DESTDIR)/etc/pam.d"
+
 PACKAGE=pambase
 ifeq "$(VERSION)" ""
 VERSION = $(shell date +"%Y%m%d")
