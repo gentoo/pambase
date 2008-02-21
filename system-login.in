@@ -1,29 +1,29 @@
 #if HAVE_TALLY
 auth		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
-#endif				
+#endif
 auth		required	pam_shells.so DEBUG
 auth		required	pam_nologin.so DEBUG
 auth		include		system-auth
  				
-#if HAVE_ACCESS		
+#if HAVE_ACCESS
 account		required	pam_access.so DEBUG
-#endif				
+#endif
 #ifdef HAVE_LOGIN_ACCESS
 account		required	pam_login_access.so
 #endif
 account		include		system-auth
-#if HAVE_TALLY		
+#if HAVE_TALLY
 account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
-#endif				
+#endif
  
 password	include		system-auth
  
 #if HAVE_SELINUX
 session		required	pam_selinux.so close
 #endif
-#if HAVE_ENV			
+#if HAVE_ENV
 session		required	pam_env.so DEBUG
-#endif				
+#endif
 session		optional	pam_lastlog.so DEBUG
 session		include		system-auth
 #if HAVE_SELINUX
