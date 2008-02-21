@@ -20,6 +20,10 @@ ifeq "$(CONSOLEKIT)" "yes"
 PAMFLAGS += -DHAVE_CONSOLEKIT
 endif
 
+ifeq "$(GNOME_KEYRING)" "yes"
+PAMFLAGS += -DHAVE_GNOME_KEYRING
+endif
+
 ifeq "$(SELINUX)" "yes"
 PAMFLAGS += -DHAVE_SELINUX=1
 endif

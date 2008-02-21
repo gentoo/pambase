@@ -1,3 +1,6 @@
+#if HAVE_GNOME_KEYRING
+auth		optional	pam_gnome_keyring.so
+#endif
 #if HAVE_TALLY
 auth		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
 #endif
@@ -16,10 +19,16 @@ account		include		system-auth
 account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
 #endif
  
+#if HAVE_GNOME_KEYRING
+password	optional	pam_gnome_keyring.so
+#endif
 password	include		system-auth
  
 #if HAVE_SELINUX
 session		required	pam_selinux.so close
+#endif
+#if HAVE_GNOME_KEYRING
+session		optional	pam_gnome_keyring.so auto_start
 #endif
 #if HAVE_ENV
 session		required	pam_env.so DEBUG
