@@ -16,6 +16,10 @@ ifeq "$(CRACKLIB)" "yes"
 PAMFLAGS += -DHAVE_CRACKLIB=1
 endif
 
+ifeq "$(CONSOLEKIT)" "yes"
+PAMFLAGS += -DHAVE_CONSOLEKIT
+endif
+
 ifeq "$(SELINUX)" "yes"
 PAMFLAGS += -DHAVE_SELINUX=1
 endif

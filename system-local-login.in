@@ -1,4 +1,7 @@
 auth		include		system-login
 account		include		system-login
 password	include		system-login
+#if HAVE_CONSOLEKIT
+session		optional	pam_ck_connector.so
+#endif
 session		include		system-login
