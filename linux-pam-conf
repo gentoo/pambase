@@ -2,6 +2,7 @@
 #define HAVE_ENV	1
 #define HAVE_TALLY	1
 #define HAVE_ACCESS	1
+#define HAVE_SHELLS	1
 
 #define UNIX_EXTENDED_ENCRYPTION md5 shadow
 
