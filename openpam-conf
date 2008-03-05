@@ -6,4 +6,11 @@
 // extended modules, so check for FreeBSD building first.
 #ifdef __FreeBSD__
 # define HAVE_LOGIN_ACCESS
+
+# if defined(DEBUG)
+#  define DEBUG_NOLOGIN DEBUG
+# endif
+
 #endif
+
+#end
