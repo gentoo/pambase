@@ -20,6 +20,10 @@ ifeq "$(CRACKLIB)" "yes"
 PAMFLAGS += -DHAVE_CRACKLIB=1
 endif
 
+ifeq "$(PASSWDQC)" "yes"
+PAMFLAGS += -DHAVE_PASSWDQC
+endif
+
 ifeq "$(CONSOLEKIT)" "yes"
 PAMFLAGS += -DHAVE_CONSOLEKIT
 endif
