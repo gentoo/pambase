@@ -54,6 +54,7 @@ endif
 dist: $(PACKAGE)-$(VERSION).tar.bz2
 
 $(PACKAGE)-$(VERSION).tar.bz2: $(shell $(GIT) ls-files)
+	$(GIT) tag $(PACKAGE)-$(VERSION)
 	$(GIT) archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | bzip2 > $@
 
 $(PAMD): %: %.in
