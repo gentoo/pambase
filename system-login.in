@@ -7,7 +7,7 @@ auth		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
 #if HAVE_SHELLS
 auth		required	pam_shells.so DEBUG
 #endif
-auth		required	pam_nologin.so DEBUG
+auth		required	pam_nologin.so
 auth		include		system-auth
  				
 #if HAVE_ACCESS
