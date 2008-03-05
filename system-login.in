@@ -16,6 +16,9 @@ account		required	pam_access.so DEBUG
 #ifdef HAVE_LOGIN_ACCESS
 account		required	pam_login_access.so
 #endif
+#if NOLOGIN_SUPPORTS_ACCOUNT
+account		required	pam_nologin.so DEBUG_NOLOGIN
+#endif
 account		include		system-auth
 #if HAVE_TALLY
 account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG

@@ -5,6 +5,7 @@
 #define HAVE_SHELLS	1
 #define HAVE_MOTD	1
 #define HAVE_MAIL	1
+#define NOLOGIN_SUPPORTS_ACCOUNT	1
 
 #define UNIX_EXTENDED_ENCRYPTION md5 shadow
 
