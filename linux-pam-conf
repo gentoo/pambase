@@ -10,3 +10,4 @@
 #define UNIX_EXTENDED_ENCRYPTION md5 shadow
 
 #define LIKEAUTH likeauth
+#define DEBUG_NOLOGIN
