@@ -5,6 +5,10 @@ CPP=cpp
 # The pam.d file to create
 PAMD=system-auth system-login system-local-login system-remote-login other
 
+# command for git (the DVCS); set this to "true" to ignore GIT support
+# (i.e.: in the ebuild)
+GIT=git
+
 # Get this by default, even if I'd like avoid it...
 ifeq "$(IMPLEMENTATION)" ""
 IMPLEMENTATION=linux-pam
@@ -45,8 +49,8 @@ endif
 
 dist: $(PACKAGE)-$(VERSION).tar.bz2
 
-$(PACKAGE)-$(VERSION).tar.bz2: $(shell git ls-files)
-	git archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | bzip2 > $@
+$(PACKAGE)-$(VERSION).tar.bz2: $(shell $(GIT) ls-files)
+	$(GIT) archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | bzip2 > $@
 
 $(PAMD): %: %.in
 	$(CPP) -traditional-cpp -P $(PAMFLAGS) $< -o $@
