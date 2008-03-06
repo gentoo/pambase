@@ -1,6 +1,6 @@
 // Only use_authtok (authentication token) when using cracklib or some other module
 // that checks for passwords.
-#if defined(HAVE_CRACKLIB)
+#if HAVE_CRACKLIB || HAVE_PASSWDQC
 # define AUTHTOK use_authtok
 #else
 # define AUTHTOK
