@@ -21,5 +21,8 @@ session		required	pam_limits.so DEBUG
 #if HAVE_ENV
 session		required	pam_env.so DEBUG
 #endif
+#if HAVE_MKTEMP
+session		optional	pam_mktemp.so
+#endif
 session		required	pam_unix.so DEBUG
  

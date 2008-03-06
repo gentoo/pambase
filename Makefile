@@ -36,6 +36,10 @@ ifeq "$(SELINUX)" "yes"
 PAMFLAGS += -DHAVE_SELINUX=1
 endif
 
+ifeq "$(MKTEMP)" "yes"
+PAMFLAGS += -DHAVE_MKTEMP=1
+endif
+
 ifeq "$(DEBUG)" "yes"
 PAMFLAGS += -DDEBUG=debug
 endif
