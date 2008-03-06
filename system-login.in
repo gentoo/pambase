@@ -13,7 +13,7 @@ auth		include		system-auth
 #if HAVE_ACCESS
 account		required	pam_access.so DEBUG
 #endif
-#ifdef HAVE_LOGIN_ACCESS
+#if HAVE_LOGIN_ACCESS
 account		required	pam_login_access.so
 #endif
 #if NOLOGIN_SUPPORTS_ACCOUNT

@@ -5,7 +5,7 @@
 // OpenPAM only provides basic modules, it's FreeBSD that provides the
 // extended modules, so check for FreeBSD building first.
 #ifdef __FreeBSD__
-# define HAVE_LOGIN_ACCESS
+# define HAVE_LOGIN_ACCESS 1
 
 # if defined(DEBUG)
 #  define DEBUG_NOLOGIN DEBUG
