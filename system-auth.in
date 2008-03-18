@@ -1,8 +1,7 @@
 #if HAVE_ENV
 auth		required	pam_env.so DEBUG
 #endif
-auth		sufficient	pam_unix.so try_first_pass LIKEAUTH nullok DEBUG
-auth		required	pam_deny.so
+auth		required	pam_unix.so try_first_pass LIKEAUTH nullok DEBUG
  
 account		required	pam_unix.so DEBUG
  
@@ -12,8 +11,7 @@ password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 try_first
 #if HAVE_PASSWDQC
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 #endif
-password	sufficient	pam_unix.so try_first_pass AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
-password	required	pam_deny.so
+password	required	pam_unix.so try_first_pass AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
  
 #if HAVE_LIMITS
 session		required	pam_limits.so DEBUG
