@@ -1,6 +1,9 @@
 #if HAVE_ENV
 auth		required	pam_env.so DEBUG
 #endif
+#ifdef HAVE_PAM_SSH
+auth		sufficient	pam_ssh.so
+#endif
 auth		required	pam_unix.so try_first_pass LIKEAUTH nullok DEBUG
  
 account		required	pam_unix.so DEBUG
@@ -21,6 +24,9 @@ session		required	pam_env.so DEBUG
 #endif
 #if HAVE_MKTEMP
 session		optional	pam_mktemp.so
+#endif
+#ifdef HAVE_PAM_SSH
+session		optional	pam_ssh.so
 #endif
 session		required	pam_unix.so DEBUG
  

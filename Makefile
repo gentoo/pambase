@@ -40,6 +40,10 @@ ifeq "$(MKTEMP)" "yes"
 PAMFLAGS += -DHAVE_MKTEMP=1
 endif
 
+ifeq "$(PAM_SSH)" "yes"
+PAMFLAGS += -DHAVE_PAM_SSH=1
+endif
+
 ifeq "$(DEBUG)" "yes"
 PAMFLAGS += -DDEBUG=debug
 endif
