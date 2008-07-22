@@ -28,5 +28,7 @@ session		optional	pam_mktemp.so
 #ifdef HAVE_PAM_SSH
 session		optional	pam_ssh.so
 #endif
+#ifdef HAVE_PAM_UNIX_SESSION
 session		required	pam_unix.so DEBUG
- 
+#endif
+
