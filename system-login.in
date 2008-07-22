@@ -16,7 +16,7 @@ account		required	pam_access.so DEBUG
 #if HAVE_LOGIN_ACCESS
 account		required	pam_login_access.so
 #endif
-#if NOLOGIN_SUPPORTS_ACCOUNT
+#if HAVE_PAM_NOLOGIN_ACCOUNT
 account		required	pam_nologin.so DEBUG_NOLOGIN
 #endif
 account		include		system-auth
