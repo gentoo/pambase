@@ -6,17 +6,16 @@
 // extended modules, so check for FreeBSD building first.
 #ifdef __FreeBSD__
 # define HAVE_LOGIN_ACCESS 1
+# define SUPPORT_UNIX_SESSION		0
 
 # if defined(DEBUG)
 #  define DEBUG_NOLOGIN DEBUG
 # endif
 
 # if __FreeBSD__ < 7
-#  define SUPPORT_UNIX_SESSION		1
 #  define SUPPORT_NOLOGIN_ACCOUNT	1
 #  define SUPPORT_NOLOGIN_AUTH		0
 # else
-#  define SUPPORT_UNIX_SESSION		0
 #  define SUPPORT_NOLOGIN_ACCOUNT	0
 #  define SUPPORT_NOLOGIN_AUTH		1
 # endif
