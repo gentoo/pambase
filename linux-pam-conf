@@ -9,7 +9,11 @@
 #define SUPPORT_NOLOGIN_ACCOUNT		1
 #define SUPPORT_NOLOGIN_AUTH		1
 
-#define UNIX_EXTENDED_ENCRYPTION md5 shadow
+#if WANT_SHA512
+# define UNIX_EXTENDED_ENCRYPTION	sha512 shadow
+#else
+# define UNIX_EXTENDED_ENCRYPTION	md5 shadow
+#endif
 
 #define LIKEAUTH likeauth
 #define DEBUG_NOLOGIN

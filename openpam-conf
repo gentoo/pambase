@@ -20,4 +20,8 @@
 #  define SUPPORT_NOLOGIN_AUTH		1
 # endif
 
+# if defined(WANT_SHA512)
+#  error "SHA512 support is not present for FreeBSD!"
+# endif
+
 #endif /* __FreeBSD__ */
