@@ -44,6 +44,10 @@ ifeq "$(PAM_SSH)" "yes"
 PAMFLAGS += -DHAVE_PAM_SSH=1
 endif
 
+ifeq "$(SHA512)" "yes"
+PAMFLAGS += -DWANT_SHA512=1
+endif
+
 ifeq "$(DEBUG)" "yes"
 PAMFLAGS += -DDEBUG=debug
 endif
