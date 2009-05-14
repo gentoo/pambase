@@ -10,15 +10,12 @@
 
 # if defined(DEBUG)
 #  define DEBUG_NOLOGIN DEBUG
+# else
+#  define DEBUG_NOLOGIN
 # endif
 
-# if __FreeBSD__ < 7
-#  define SUPPORT_NOLOGIN_ACCOUNT	1
-#  define SUPPORT_NOLOGIN_AUTH		0
-# else
-#  define SUPPORT_NOLOGIN_ACCOUNT	0
-#  define SUPPORT_NOLOGIN_AUTH		1
-# endif
+# define SUPPORT_NOLOGIN_ACCOUNT	1
+# define SUPPORT_NOLOGIN_AUTH		0
 
 # if defined(WANT_SHA512)
 #  error "SHA512 support is not present for FreeBSD!"
