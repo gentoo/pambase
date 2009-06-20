@@ -14,7 +14,7 @@ ifeq "$(IMPLEMENTATION)" ""
 IMPLEMENTATION=linux-pam
 endif
 
-PAMFLAGS = -include $(IMPLEMENTATION)-conf -include basic-conf
+PAMFLAGS = -include $(IMPLEMENTATION)-conf -include basic-conf -DLINUX_PAM_VERSION=$(LINUX_PAM_VERSION)
 
 ifeq "$(CRACKLIB)" "yes"
 PAMFLAGS += -DHAVE_CRACKLIB=1
