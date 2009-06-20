@@ -1,5 +1,5 @@
-#if HAVE_TALLY
-auth		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
+#if defined(TALLY_MODULE)
+auth		required	TALLY_MODULE file=/var/log/faillog onerr=succeed
 #endif
 #if HAVE_SHELLS
 auth		required	pam_shells.so DEBUG
@@ -22,8 +22,8 @@ account		required	pam_login_access.so
 account		required	pam_nologin.so DEBUG_NOLOGIN
 #endif
 account		include		system-auth
-#if HAVE_TALLY
-account		required	pam_tally.so file=/var/log/faillog onerr=succeed DEBUG
+#if defined(TALLY_MODULE)
+account		required	TALLY_MODULE file=/var/log/faillog onerr=succeed DEBUG
 #endif
  
 password	include		system-auth

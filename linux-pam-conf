@@ -1,6 +1,5 @@
 #define HAVE_LIMITS			1
 #define HAVE_ENV			1
-#define HAVE_TALLY			1
 #define HAVE_ACCESS			1
 #define HAVE_SHELLS			1
 #define HAVE_MOTD			1
@@ -13,6 +12,12 @@
 # define UNIX_EXTENDED_ENCRYPTION	sha512 shadow
 #else
 # define UNIX_EXTENDED_ENCRYPTION	md5 shadow
+#endif
+
+#if LINUX_PAM_VERSION > 0x010100 /* 1.1.0 */
+# define TALLY_MODULE pam_tally2.so
+#else
+# define TALLY_MODULE pam_tally.so
 #endif
 
 #define LIKEAUTH likeauth
