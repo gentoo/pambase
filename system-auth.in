@@ -15,20 +15,8 @@ password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3 D
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 #endif
 password	required	pam_unix.so try_first_pass AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
- 
-#if HAVE_LIMITS
-session		required	pam_limits.so DEBUG
-#endif
-#if HAVE_ENV
-session		required	pam_env.so DEBUG
-#endif
-#if HAVE_MKTEMP
-session		optional	pam_mktemp.so
-#endif
+
 #if HAVE_PAM_SSH
 session		optional	pam_ssh.so
 #endif
-#if SUPPORT_UNIX_SESSION
-session		required	pam_unix.so DEBUG
-#endif
-session		optional	pam_permit.so
+#include "system-session.inc"
