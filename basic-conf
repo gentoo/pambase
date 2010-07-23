@@ -13,7 +13,7 @@
 #if HAVE_KRB5 || PASSWORD_STRENGTH
 # define UNIX_AUTHTOK AUTHTOK
 #else
-# define UNIX_AUTHTOK AUTHTOK
+# define UNIX_AUTHTOK
 #endif
 
 // Define DEBUG to an empty string unless it was required by the user
