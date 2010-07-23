@@ -4,8 +4,14 @@ auth		required	pam_env.so DEBUG
 #if HAVE_PAM_SSH
 auth		sufficient	pam_ssh.so
 #endif
+#if HAVE_KRB5
+auth		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
+#endif
 auth		required	pam_unix.so try_first_pass LIKEAUTH nullok DEBUG
  
+#if HAVE_KRB5
+auth		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
+#endif
 account		required	pam_unix.so DEBUG
  
 #if HAVE_CRACKLIB
@@ -14,7 +20,10 @@ password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3 D
 #if HAVE_PASSWDQC
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 #endif
-password	required	pam_unix.so try_first_pass AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
+#if HAVE_KRB5
+password	KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
+#endif
+password	required	pam_unix.so try_first_pass UNIX_AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
 
 #if HAVE_PAM_SSH
 session		optional	pam_ssh.so

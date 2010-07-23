@@ -1,9 +1,19 @@
 // Only use_authtok (authentication token) when using cracklib or some other module
-// that checks for passwords.
+// that checks for passwords, or pam_krb5
+#define AUTHTOK use_authtok
+
 #if HAVE_CRACKLIB || HAVE_PASSWDQC
-# define AUTHTOK use_authtok
+# define PASSWORD_STRENGTH 1
+#endif
+
+#if HAVE_KRB5 && PASSWORD_STRENGTH
+# define KRB5_AUTHTOK AUTHTOK
+#endif
+
+#if HAVE_KRB5 || PASSWORD_STRENGTH
+# define UNIX_AUTHTOK AUTHTOK
 #else
-# define AUTHTOK
+# define UNIX_AUTHTOK AUTHTOK
 #endif
 
 // Define DEBUG to an empty string unless it was required by the user
@@ -18,3 +28,19 @@
 #ifndef LIKEAUTH
 #define LIKEAUTH
 #endif
+
+#define KRB5_PARAMS DEBUG ignore_root try_first_pass
+
+/* By using the extended Linux-PAM syntax for this, it is possible to
+   fine-tune the Kerberos handling so that it works out of hte box on
+   most desktop systems.
+
+   What this control operation does is ignore failures and errors from
+   Kerberos (falling back on local pam_unix auth), but if it's good,
+   it'll skip over the following module (pam_unix) with an accepted
+   status.
+
+   IMPORTANT! Make sure that the only thing that comes right after
+   pam_krb5 with KRB5_CONTROL is pam_unix!
+ */
+#define KRB5_CONTROL [success=1 default=ignore]
