@@ -26,7 +26,7 @@ password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 password	KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 #endif
 password	required	pam_unix.so try_first_pass UNIX_AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
-
+ 
 #if HAVE_PAM_SSH
 session		optional	pam_ssh.so
 #endif
