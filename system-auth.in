@@ -15,6 +15,8 @@ auth		optional	pam_permit.so
 account		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 #endif
 account		required	pam_unix.so DEBUG
+/* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
+account		optional	pam_permit.so
  
 #if HAVE_CRACKLIB
 password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3 DEBUG
@@ -26,6 +28,8 @@ password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 password	KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 #endif
 password	required	pam_unix.so try_first_pass UNIX_AUTHTOK nullok UNIX_EXTENDED_ENCRYPTION DEBUG
+/* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
+password	optional	pam_permit.so
  
 #if HAVE_PAM_SSH
 session		optional	pam_ssh.so
