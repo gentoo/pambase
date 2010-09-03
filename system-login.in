@@ -37,7 +37,9 @@ session		required	pam_selinux.so close
 #if HAVE_ENV
 session		required	pam_env.so DEBUG
 #endif
+#if HAVE_LASTLOG
 session		optional	pam_lastlog.so DEBUG
+#endif
 session		include		system-auth
 #if HAVE_CONSOLEKIT
 session		optional	pam_ck_connector.so nox11

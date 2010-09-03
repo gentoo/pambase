@@ -56,6 +56,10 @@ ifeq "$(DEBUG)" "yes"
 PAMFLAGS += -DDEBUG=debug
 endif
 
+ifeq "$(MINIMAL)" "yes"
+PAMFLAGS += -DMINIMAL
+endif
+
 all: $(PAMD)
 
 install: $(PAMD)
