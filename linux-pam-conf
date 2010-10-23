@@ -2,6 +2,7 @@
 #define HAVE_ENV			1
 #define HAVE_ACCESS			1
 #define HAVE_SHELLS			1
+#define HAVE_LOGINUID			1
 
 #define SUPPORT_UNIX_SESSION		1
 #define SUPPORT_NOLOGIN_ACCOUNT		1

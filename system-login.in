@@ -31,6 +31,9 @@ password	include		system-auth
 password	optional	pam_gnome_keyring.so
 #endif
  
+#if HAVE_LOGINUID
+session         optional        pam_loginuid.so
+#endif
 #if HAVE_SELINUX
 session		required	pam_selinux.so close
 #endif
