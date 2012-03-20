@@ -3,7 +3,7 @@
 CPP=cpp
 
 # The pam.d file to create
-PAMD=system-auth system-login system-local-login system-remote-login system-services other
+PAMD=login passwd su system-auth system-login system-local-login system-remote-login system-services other
 
 # command for git (the DVCS); set this to "true" to ignore GIT support
 # (i.e.: in the ebuild)
