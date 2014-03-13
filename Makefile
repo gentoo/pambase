@@ -28,6 +28,10 @@ ifeq "$(CONSOLEKIT)" "yes"
 PAMFLAGS += -DHAVE_CONSOLEKIT=1
 endif
 
+ifeq "$(SYSTEMD)" "yes"
+PAMFLAGS += -DHAVE_SYSTEMD=1
+endif
+
 ifeq "$(GNOME_KEYRING)" "yes"
 PAMFLAGS += -DHAVE_GNOME_KEYRING=1
 endif
