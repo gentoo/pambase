@@ -75,11 +75,11 @@ ifeq "$(VERSION)" ""
 VERSION = $(shell date +"%Y%m%d")
 endif
 
-dist: $(PACKAGE)-$(VERSION).tar.bz2
+dist: $(PACKAGE)-$(VERSION).tar.xz
 
-$(PACKAGE)-$(VERSION).tar.bz2: $(shell $(GIT) ls-files)
+$(PACKAGE)-$(VERSION).tar.xz: $(shell $(GIT) ls-files)
 	$(GIT) tag $(PACKAGE)-$(VERSION)
-	$(GIT) archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | bzip2 > $@
+	$(GIT) archive --format=tar --prefix=$(PACKAGE)-$(VERSION)/ HEAD | xz > $@
 
 $(PAMD): %: %.in
 	$(CPP) -traditional-cpp -P $(PAMFLAGS) $< -o $@
