@@ -41,7 +41,7 @@ session		required	pam_selinux.so close
 session		required	pam_env.so DEBUG
 #endif
 #if HAVE_LASTLOG
-session		optional	pam_lastlog.so DEBUG
+session		optional	pam_lastlog.so silent DEBUG
 #endif
 session		include		system-auth
 #if HAVE_CONSOLEKIT
