@@ -10,14 +10,14 @@ auth		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 auth		required	pam_unix.so try_first_pass LIKEAUTH NULLOK DEBUG
 /* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
 auth		optional	pam_permit.so
- 
+
 #if HAVE_KRB5
 account		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 #endif
 account		required	pam_unix.so DEBUG
 /* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
 account		optional	pam_permit.so
- 
+
 #if HAVE_CRACKLIB
 password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3 DEBUG
 #endif
@@ -30,7 +30,7 @@ password	KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 password	required	pam_unix.so try_first_pass UNIX_AUTHTOK NULLOK UNIX_EXTENDED_ENCRYPTION DEBUG
 /* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
 password	optional	pam_permit.so
- 
+
 #if HAVE_PAM_SSH
 session		optional	pam_ssh.so
 #endif

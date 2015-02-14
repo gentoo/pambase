@@ -11,7 +11,7 @@ auth		include		system-auth
 #if HAVE_GNOME_KEYRING
 auth		optional	pam_gnome_keyring.so
 #endif
- 				
+
 #if HAVE_ACCESS
 account		required	pam_access.so DEBUG
 #endif
@@ -25,12 +25,12 @@ account		include		system-auth
 #if defined(TALLY_MODULE)
 account		required	TALLY_MODULE onerr=succeed DEBUG
 #endif
- 
+
 password	include		system-auth
 #if HAVE_GNOME_KEYRING
 password	optional	pam_gnome_keyring.so
 #endif
- 
+
 #if HAVE_LOGINUID
 session         optional        pam_loginuid.so
 #endif
@@ -59,4 +59,3 @@ session		optional	pam_motd.so motd=/etc/motd
 #if HAVE_MAIL
 session		optional	pam_mail.so
 #endif
-  
