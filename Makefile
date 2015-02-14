@@ -36,6 +36,10 @@ ifeq "$(GNOME_KEYRING)" "yes"
 PAMFLAGS += -DHAVE_GNOME_KEYRING=1
 endif
 
+ifeq "$(SECURETTY)" "yes"
+PAMFLAGS += -DHAVE_SECURETTY=1
+endif
+
 ifeq "$(SELINUX)" "yes"
 PAMFLAGS += -DHAVE_SELINUX=1
 endif
