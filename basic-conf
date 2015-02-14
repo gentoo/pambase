@@ -29,6 +29,12 @@
 #define LIKEAUTH
 #endif
 
+#if WANT_NULLOK
+#define NULLOK nullok
+#else
+#define NULLOK
+#endif
+
 #define KRB5_PARAMS DEBUG ignore_root try_first_pass
 
 /* By using the extended Linux-PAM syntax for this, it is possible to
