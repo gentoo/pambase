@@ -32,6 +32,10 @@ ifeq "$(SYSTEMD)" "yes"
 PAMFLAGS += -DHAVE_SYSTEMD=1
 endif
 
+ifeq "$(ELOGIND)" "yes"
+PAMFLAGS += -DHAVE_ELOGIND=1
+endif
+
 ifeq "$(GNOME_KEYRING)" "yes"
 PAMFLAGS += -DHAVE_GNOME_KEYRING=1
 endif

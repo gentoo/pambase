@@ -8,9 +8,6 @@ auth		required	pam_shells.so DEBUG
 auth		required	pam_nologin.so DEBUG_NOLOGIN
 #endif
 auth		include		system-auth
-#if HAVE_GNOME_KEYRING
-auth		optional	pam_gnome_keyring.so
-#endif
 
 #if HAVE_ACCESS
 account		required	pam_access.so DEBUG
@@ -27,9 +24,6 @@ account		required	TALLY_MODULE onerr=succeed DEBUG
 #endif
 
 password	include		system-auth
-#if HAVE_GNOME_KEYRING
-password	optional	pam_gnome_keyring.so
-#endif
 
 #if HAVE_LOGINUID
 session         optional        pam_loginuid.so
@@ -50,9 +44,6 @@ session		optional	pam_ck_connector.so nox11
 #if HAVE_SELINUX
  # Note: modules that run in the user's context must come after this line.
 session		required	pam_selinux.so multiple open
-#endif
-#if HAVE_GNOME_KEYRING
-session		optional	pam_gnome_keyring.so auto_start
 #endif
 #if HAVE_MOTD
 session		optional	pam_motd.so motd=/etc/motd
