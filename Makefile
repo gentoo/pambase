@@ -9,12 +9,7 @@ PAMD=login passwd su system-auth system-login system-local-login system-remote-l
 # (i.e.: in the ebuild)
 GIT=git
 
-# Get this by default, even if I'd like avoid it...
-ifeq "$(IMPLEMENTATION)" ""
-IMPLEMENTATION=linux-pam
-endif
-
-PAMFLAGS = -include $(IMPLEMENTATION)-conf -include basic-conf -DLINUX_PAM_VERSION=$(LINUX_PAM_VERSION)
+PAMFLAGS = -include linux-pam-conf -include basic-conf -DLINUX_PAM_VERSION=$(LINUX_PAM_VERSION)
 
 ifeq "$(CRACKLIB)" "yes"
 PAMFLAGS += -DHAVE_CRACKLIB=1
