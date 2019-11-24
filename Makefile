@@ -71,6 +71,10 @@ ifeq "$(MINIMAL)" "yes"
 PAMFLAGS += -DMINIMAL
 endif
 
+ifeq "$(LIBCAP)" "yes"
+PAMFLAGS += -DLIBCAP
+endif
+
 all: $(PAMD)
 
 install: $(PAMD)
