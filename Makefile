@@ -72,7 +72,7 @@ PAMFLAGS += -DMINIMAL
 endif
 
 ifeq "$(LIBCAP)" "yes"
-PAMFLAGS += -DLIBCAP
+PAMFLAGS += -DHAVE_LIBCAP=1
 endif
 
 all: $(PAMD)
