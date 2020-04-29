@@ -1,0 +1,17 @@
+certificate version 0.1
+pusher Mikle Kolyada <zlogene@gentoo.org> 1588196272 +0300
+pushee git+ssh://git.gentoo.org/proj/pambase.git
+nonce 1588196272-337a1d6623ef9f1c865b0a3e0dc2d44261ba0407
+
+7eaf47da1d6cd18a8253c25213c34b16ae08e87f 4a97472903679c7d85ca391aeedaea3ce7797acf refs/heads/master
+-----BEGIN PGP SIGNATURE-----
+
+iQFHBAABCAAxFiEEWmyBGnI+Eihw6dN8HICQJIqVl8cFAl6p87ATHHpsb2dlbmVA
+Z2VudG9vLm9yZwAKCRAcgJAkipWXx2hOB/9I/4Rdvl/kDNk+Ak4uLl6GDplHdpjU
+v8yjyFAHnufnJN4Mw2MIxqW+rXS/KjSK4O1Tssm2yLNFEj9pIYujegJQe961tsvT
+4uisBt0rpKv7xZVQfa+wK/nYq29o5ELnAhhCqQN8nJrqXmVPyt400+TKs8Pkgfs2
+mK6nDaRKbmRVsx9CuynuX9jogY8uAwZFjijdU4FVtQTcT9efsZg6xYiFa6nvjiRD
+dKaZCgT2/ASPx6lTrGF98WOAXSo0OfsCjuExK704CyLbyaisqXsy36X4Ta/v2+O3
+a6VmrXhbO0U97+zFVyIJP9pFiPp04i7xh88ZipIKB4yszr6Yw2zUJSoA
+=0DiO
+-----END PGP SIGNATURE-----
