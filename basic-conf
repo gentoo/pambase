@@ -1,8 +1,8 @@
-// Only use_authtok (authentication token) when using cracklib or some other module
+// Only use_authtok (authentication token) when using passwdqc or some other module
 // that checks for passwords, or pam_krb5
 #define AUTHTOK use_authtok
 
-#if HAVE_CRACKLIB || HAVE_PASSWDQC
+#if HAVE_PASSWDQC
 # define PASSWORD_STRENGTH 1
 #endif
 

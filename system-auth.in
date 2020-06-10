@@ -18,9 +18,6 @@ account		required	pam_unix.so DEBUG
 /* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
 account		optional	pam_permit.so
 
-#if HAVE_CRACKLIB
-password	required	pam_cracklib.so difok=2 minlen=8 dcredit=2 ocredit=2 retry=3 DEBUG
-#endif
 #if HAVE_PASSWDQC
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 #endif

@@ -12,12 +12,7 @@
 # define HAVE_MOTD			1
 # define HAVE_MAIL			1
 # define HAVE_LASTLOG                   1
-
-# if LINUX_PAM_VERSION > 0x010100 /* 1.1.0 */
-#  define TALLY_MODULE pam_tally2.so
-# else
-#  define TALLY_MODULE pam_tally.so
-# endif
+# define HAVE_FAILLOCK			1
 
 #endif
 

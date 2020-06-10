@@ -11,10 +11,6 @@ GIT=git
 
 PAMFLAGS = -include linux-pam-conf -include basic-conf -DLINUX_PAM_VERSION=$(LINUX_PAM_VERSION)
 
-ifeq "$(CRACKLIB)" "yes"
-PAMFLAGS += -DHAVE_CRACKLIB=1
-endif
-
 ifeq "$(PASSWDQC)" "yes"
 PAMFLAGS += -DHAVE_PASSWDQC=1
 endif
