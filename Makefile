@@ -1,6 +1,6 @@
 # Reset this to 'cpp' so it gets traditional syntax; cc -E will not work
 # properly.
-CPP?=cpp
+CPP=cpp
 
 # The pam.d file to create
 PAMD=login passwd su system-auth system-login system-local-login system-remote-login system-services other
