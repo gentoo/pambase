@@ -1,6 +1,13 @@
 #if HAVE_ENV
 auth		required	pam_env.so DEBUG
 #endif
+
+#if HAVE_FAILOCK
+auth            required        pam_faillock.so preauth silent audit deny=3 unlock_time=600
+auth            sufficient      pam_unix.so nullok try_first_pass
+auth            [default=die]   pam_faillock.so authfail audit deny=3 unlock_time=600
+#endif
+
 #if HAVE_PAM_SSH
 auth		sufficient	pam_ssh.so
 #endif
@@ -17,6 +24,10 @@ account		KRB5_CONTROL	pam_krb5.so KRB5_PARAMS
 account		required	pam_unix.so DEBUG
 /* This is needed to make sure that the Kerberos skip-on-success won't cause a bad jump. */
 account		optional	pam_permit.so
+
+#if HAVE_FAILLOCK
+account         required        pam_faillock.so
+#endif
 
 #if HAVE_PASSWDQC
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3

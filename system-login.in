@@ -1,6 +1,9 @@
 #if HAVE_FAILLOCK
-auth		required	pam_faillock.so dir=/var/log deny=3
+auth            required        pam_faillock.so preauth silent audit deny=3 unlock_time=600
+auth            sufficient	pam_unix.so nullok try_first_pass
+auth            [default=die]   pam_faillock.so authfail audit deny=3 unlock_time=600
 #endif
+
 #if HAVE_SHELLS
 auth		required	pam_shells.so DEBUG
 #endif
@@ -19,8 +22,9 @@ account		required	pam_login_access.so
 account		required	pam_nologin.so DEBUG_NOLOGIN
 #endif
 account		include		system-auth
+
 #if HAVE_FAILLOCK
-account		required	pam_faillock.so dir=/var/log deny=3
+account         required        pam_faillock.so
 #endif
 
 password	include		system-auth
