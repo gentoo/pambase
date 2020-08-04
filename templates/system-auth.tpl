@@ -35,7 +35,7 @@ password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 password	required	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
 password	optional	pam_permit.so
 
-{%- if pam_ssh -%}
+{%- if pam_ssh %}
 session		optional	pam_ssh.so
 {% endif -%}
 
