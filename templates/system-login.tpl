@@ -21,7 +21,7 @@ session		required	pam_selinux.so close
 {% endif -%}
 
 session		required	pam_env.so envfile=/etc/profile.env {{ debug|default('', true) }}
-{% if not miniaml -%}
+{% if not minimal -%}
 session		optional	pam_lastlog.so silent {{ debug|default('', true) }}
 {% endif -%}
 session		include		system-auth
