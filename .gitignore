@@ -1,10 +1,2 @@
-login
-passwd
-su
-system-auth
-system-login
-system-local-login
-system-remote-login
-system-services
-other
-pambase-*.tar.bz2
+stack/
+.idea/
