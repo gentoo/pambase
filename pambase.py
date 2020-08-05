@@ -89,7 +89,7 @@ def parse_templates(processed_args):
 
 			# Strip all intermediate lines to not worry about appeasing Jinja
 			lines = rendered_template.split("\n")
-			lines = [line for line in lines if line]
+			lines = [line.strip() for line in lines if line]
 			rendered_template = "\n".join(lines)
 
 			if rendered_template:
