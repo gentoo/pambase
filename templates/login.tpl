@@ -1,6 +1,6 @@
-{% if securetty -%}
+{% if securetty %}
 auth		required	pam_securetty.so
-{% endif -%}
+{% endif %}
 
 auth		include		system-local-login
 account		include		system-local-login
