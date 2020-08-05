@@ -67,7 +67,7 @@ def process_args(args):
 
 def parse_templates(processed_args):
 	load = FileSystemLoader('')
-	env = Environment(loader=load)
+	env = Environment(loader=load, trim_blocks=True, lstrip_blocks=True, keep_trailing_newline=True)
 
 	templates = [
 		"login",
@@ -86,6 +86,11 @@ def parse_templates(processed_args):
 
 		with open('stack/{0}'.format(template_name), "w+") as output:
 			rendered_template = template.render(processed_args)
+
+			# Strip all intermediate lines to not worry about appeasing Jinja
+			lines = rendered_template.split("\n")
+			lines = [line for line in lines if line]
+			rendered_template = "\n".join(lines)
 
 			if rendered_template:
 				output.write(rendered_template + "\n")
