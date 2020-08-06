@@ -78,7 +78,7 @@ def parse_templates(processed_args):
 		"su",
 		"system-auth",
 		"system-login",
-		"system-service"
+		"system-services"
 	]
 
 	for template_name in templates:
