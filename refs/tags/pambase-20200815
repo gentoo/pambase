@@ -1,0 +1,17 @@
+certificate version 0.1
+pusher 0x1C8090248A9597C7 1597481509 +0300
+pushee git+ssh://git.gentoo.org/proj/pambase.git
+nonce 1597481509-3f5ad662bd28de3f4e3e5aba24bf4bb8dcd2b6ea
+
+0000000000000000000000000000000000000000 1e2706575348150992737c5415df36f6517b20fe refs/tags/pambase-20200815
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCAAdFiEEWmyBGnI+Eihw6dN8HICQJIqVl8cFAl83oiUACgkQHICQJIqV
+l8cbiQf+PRwFW8BAo8q6qesXVLbhkItGoxMtYDaaXyQ+UJ7nNIqHuVJ0jfU1EZqr
+6odVe6ktlDuzXEs+A+sOEotl+0SwlgQsbOIgamKTGnuz/oRdRf415R9gpG0Xr6uy
+f7JKNpOjuGmRn59gvWYV0vHvnwkeIoKgFoHq8P4jM/peeMD1dvB4uK488lv5QXvk
+CNa6qdZZDboXuyeI2t6KdmDE5BcFykXRutoJ0lnxl7VemLZ05oetnJCosfJ1qTI3
+nhQ5fcsjFGYeqV1ak2CaZ6rf2sJorxViJeh97Q0VAyjMfLB2T4nalInMo0ifdx5y
+ewciNmAmn2ADwt2ufGvv15QJewpr0Q==
+=ilgJ
+-----END PGP SIGNATURE-----
