@@ -9,6 +9,7 @@ def main():
 	parser = argparse.ArgumentParser(description='basic Gentoo PAM configuration files')
 	parser.add_argument('--libcap', action="store_true", help='enable pam_caps.so module')
 	parser.add_argument('--passwdqc', action="store_true", help='enable pam_passwdqc.so module')
+	parser.add_argument('--pwquality', action="store_true", help='enable pam_pwquality.so module')
 	parser.add_argument('--elogind', action="store_true", help='enable pam_elogind.so module')
 	parser.add_argument('--systemd', action="store_true", help='enable pam_systemd.so module')
 	parser.add_argument('--selinux', action="store_true", help='enable pam_selinux.so module')

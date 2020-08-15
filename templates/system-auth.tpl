@@ -28,6 +28,10 @@ account         required        pam_faillock.so
 password	required	pam_passwdqc.so min=8,8,8,8,8 retry=3
 {% endif %}
 
+{% if pwquality %}
+password        required        pam_pwquality.so retry=3 minlen=8 lcredit=2 ucredit=2 dcredit=2 ocredit=2 difok=3 enforce_for_root
+{% endif %}
+
 {% if krb5 %}
 password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
