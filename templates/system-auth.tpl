@@ -32,6 +32,10 @@ password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
 password        required        pam_pwquality.so
 {% endif %}
 
+{% if pwhistory %}
+password        required        pam_pwhistory.so use_authtok remember=5 retry=3
+{% endif %}
+
 {% if krb5 %}
 password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
