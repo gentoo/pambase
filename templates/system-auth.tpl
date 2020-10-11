@@ -47,14 +47,6 @@ password	optional	pam_permit.so
 session		optional	pam_ssh.so
 {% endif %}
 
-{% if systemd %}
--session        optional        pam_systemd.so
-{% endif %}
-
-{% if elogind %}
--session        optional        pam_elogind.so
-{% endif %}
-
 {% if libcap %}
 -session        optional        pam_libcap.so
 {% endif %}

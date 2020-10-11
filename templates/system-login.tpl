@@ -32,3 +32,11 @@ session		optional	pam_motd.so motd=/etc/motd
 {% if not minimal %}
 session		optional	pam_mail.so
 {% endif %}
+
+{% if systemd %}
+-session        optional        pam_systemd.so
+{% endif %}
+
+{% if elogind %}
+-session        optional        pam_elogind.so
+{% endif %}
