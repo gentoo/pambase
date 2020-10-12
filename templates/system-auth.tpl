@@ -9,6 +9,11 @@ auth        [success=1 default=ignore]      pam_krb5.so {{ krb5_params }}
 
 auth		required	pam_unix.so try_first_pass {{ likeauth }} {{ nullok|default('', true) }} {{ debug|default('', true) }}
 auth		optional	pam_permit.so
+{% if not minimal %}
+auth		required	pam_faillock.so preauth conf=/etc/security/faillock.conf
+auth		sufficient	pam_unix.so nullok try_first_pass
+auth		[default=die]	pam_faillock.so authfail
+{% endif %}
 
 {% if krb5 %}
 account		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}

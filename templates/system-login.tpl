@@ -2,12 +2,6 @@ auth		required	pam_shells.so {{ debug|default('', true) }}
 auth		required	pam_nologin.so
 auth		include		system-auth
 
-{% if not minimal %}
-auth            required        pam_faillock.so preauth conf=/etc/security/faillock.conf
-auth            sufficient      pam_unix.so nullok try_first_pass
-auth            [default=die]   pam_faillock.so authfail
-{% endif %}
-
 account		required	pam_access.so {{ debug|default('', true) }}
 account		required	pam_nologin.so
 account		include		system-auth
