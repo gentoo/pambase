@@ -7,13 +7,10 @@ auth		sufficient	pam_ssh.so
 auth        [success=1 default=ignore]      pam_krb5.so {{ krb5_params }}
 {% endif %}
 
-auth		required	pam_unix.so try_first_pass {{ likeauth }} {{ nullok|default('', true) }} {{ debug|default('', true) }}
 auth		optional	pam_permit.so
-{% if not minimal %}
-auth		required	pam_faillock.so preauth
-auth		sufficient	pam_unix.so nullok try_first_pass
+auth		requisite	pam_faillock.so preauth
+auth		[success=1 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 auth		[default=die]	pam_faillock.so authfail
-{% endif %}
 
 {% if krb5 %}
 account		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
