@@ -17,9 +17,7 @@ account		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 account		required	pam_unix.so {{ debug|default('', true) }}
 account		optional	pam_permit.so
-{% if not minimal %}
 account         required        pam_faillock.so
-{% endif %}
 
 {% if passwdqc %}
 password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf

@@ -5,9 +5,7 @@ auth		include		system-auth
 account		required	pam_access.so {{ debug|default('', true) }}
 account		required	pam_nologin.so
 account		include		system-auth
-{% if not minimal %}
 account         required        pam_faillock.so
-{% endif %}
 
 password	include		system-auth
 session         optional        pam_loginuid.so
