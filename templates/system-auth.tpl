@@ -4,20 +4,20 @@ auth		sufficient	pam_ssh.so
 {% endif %}
 
 {% if krb5 %}
-auth        [success=1 default=ignore]      pam_krb5.so {{ krb5_params }}
+auth		[success=4 default=ignore]      pam_krb5.so {{ krb5_params }}
 {% endif %}
 
-auth		optional	pam_permit.so
 auth		requisite	pam_faillock.so preauth
 auth		[success=1 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 auth		[default=die]	pam_faillock.so authfail
+auth		optional	pam_permit.so
 
 {% if krb5 %}
-account		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
+account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 account		required	pam_unix.so {{ debug|default('', true) }}
-account		optional	pam_permit.so
 account         required        pam_faillock.so
+account         optional        pam_permit.so
 
 {% if passwdqc %}
 password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
