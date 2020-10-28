@@ -35,7 +35,12 @@ password        required        pam_pwhistory.so use_authtok remember=5 retry=3
 password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 
+{% if passwdqc or pwquality %}
 password	required	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+{% else %}
+password        required        pam_unix.so try_first_pass {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+{% endif %}
+
 password	optional	pam_permit.so
 
 {% if pam_ssh %}
