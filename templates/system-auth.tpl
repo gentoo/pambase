@@ -4,7 +4,7 @@ auth		sufficient	pam_ssh.so
 {% endif %}
 
 {% if krb5 %}
-auth		[success=4 default=ignore]      pam_krb5.so {{ krb5_params }}
+auth		[success=3 default=ignore]      pam_krb5.so {{ krb5_params }}
 {% endif %}
 
 auth		requisite	pam_faillock.so preauth
