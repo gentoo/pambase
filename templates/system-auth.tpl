@@ -47,7 +47,7 @@ password	optional	pam_permit.so
 session		optional	pam_ssh.so
 {% endif %}
 
-{% if libcap %}
+{% if caps %}
 -auth		optional	pam_cap.so
 {% endif %}
 
