@@ -48,7 +48,7 @@ session		optional	pam_ssh.so
 {% endif %}
 
 {% if libcap %}
--session        optional        pam_cap.so
+-auth		optional	pam_cap.so
 {% endif %}
 
 {% include "templates/system-session.tpl" %}
