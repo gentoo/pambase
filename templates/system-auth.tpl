@@ -12,6 +12,10 @@ auth		[success=1 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ d
 auth		[default=die]	pam_faillock.so authfail
 auth		optional	pam_permit.so
 
+{% if caps %}
+-auth		optional	pam_cap.so
+{% endif %}
+
 {% if krb5 %}
 account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
@@ -45,10 +49,6 @@ password	optional	pam_permit.so
 
 {% if pam_ssh %}
 session		optional	pam_ssh.so
-{% endif %}
-
-{% if caps %}
--auth		optional	pam_cap.so
 {% endif %}
 
 {% include "templates/system-session.tpl" %}
