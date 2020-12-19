@@ -9,5 +9,3 @@ session		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 
 session		required	pam_unix.so {{ debug|default('', true) }}
-
-session		optional	pam_permit.so

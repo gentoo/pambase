@@ -10,7 +10,6 @@ auth		[success=3 default=ignore]      pam_krb5.so {{ krb5_params }}
 auth		requisite	pam_faillock.so preauth
 auth		[success=1 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 auth		[default=die]	pam_faillock.so authfail
-auth		optional	pam_permit.so
 
 {% if caps %}
 -auth		optional	pam_cap.so
@@ -21,7 +20,6 @@ account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 account		required	pam_unix.so {{ debug|default('', true) }}
 account         required        pam_faillock.so
-account         optional        pam_permit.so
 
 {% if passwdqc %}
 password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
@@ -44,8 +42,6 @@ password	required	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }
 {% else %}
 password        required        pam_unix.so try_first_pass {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
 {% endif %}
-
-password	optional	pam_permit.so
 
 {% if pam_ssh %}
 session		optional	pam_ssh.so
