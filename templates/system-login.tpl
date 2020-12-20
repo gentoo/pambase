@@ -4,6 +4,7 @@ auth		include		system-auth
 
 account		required	pam_access.so {{ debug|default('', true) }}
 account		required	pam_nologin.so
+account         required        pam_time.so
 account		include		system-auth
 
 password	include		system-auth
