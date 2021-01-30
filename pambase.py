@@ -15,6 +15,7 @@ def main():
     parser.add_argument('--pwquality', action="store_true", help='enable pam_pwquality.so module')
     parser.add_argument('--elogind', action="store_true", help='enable pam_elogind.so module')
     parser.add_argument('--systemd', action="store_true", help='enable pam_systemd.so module')
+    parser.add_argument('--homed', action="store_true", help='enable pam_systemd_home.so module')
     parser.add_argument('--selinux', action="store_true", help='enable pam_selinux.so module')
     parser.add_argument('--mktemp', action="store_true", help='enable pam_mktemp.so module')
     parser.add_argument('--pam-ssh', action="store_true", help='enable pam_ssh.so module')

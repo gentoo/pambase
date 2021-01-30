@@ -11,11 +11,16 @@ auth		[success=3 default=ignore]      pam_krb5.so {{ krb5_params }}
 {% endif %}
 
 auth		requisite	pam_faillock.so preauth
-auth		[success=1 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
+{% if homed %}
+auth		[success=2 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
+auth            [success=1 default=ignore]      pam_systemd_home.so
+{% else %}
+auth            [success=1 default=ignore]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pas
+{% endif %}
 auth		[default=die]	pam_faillock.so authfail
 
 {% if caps %}
--auth		optional	pam_cap.so
+auth		optional	pam_cap.so
 {% endif %}
 
 {% if homed %}
@@ -24,6 +29,11 @@ auth		[default=die]	pam_faillock.so authfail
 {% if krb5 %}
 account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
+
+{% if homed %}
+account         [success=1 default=ignore]      pam_systemd_home.so
+{% endif %}
+
 account		required	pam_unix.so {{ debug|default('', true) }}
 account         required        pam_faillock.so
 
@@ -41,6 +51,10 @@ password        required        pam_pwhistory.so use_authtok remember=5 retry=3
 
 {% if krb5 %}
 password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
+{% endif %}
+
+{% if homed %}
+password        [success=1 default=ignore]      pam_systemd_home.so
 {% endif %}
 
 {% if passwdqc or pwquality %}
