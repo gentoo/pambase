@@ -9,7 +9,6 @@ def main():
     parser = argparse.ArgumentParser(description='basic Gentoo PAM configuration files')
     parser.add_argument('--gnome-keyring', action="store_true", help='enable pam_gnome_keyring.so module')
     parser.add_argument('--caps', action="store_true", help='enable pam_cap.so module')
-    parser.add_argument('--homed', action="store_true", help='enable pam_systemd_homed.so module')
     parser.add_argument('--passwdqc', action="store_true", help='enable pam_passwdqc.so module')
     parser.add_argument('--pwhistory', action="store_true", help='enable pam_pwhistory.so module')
     parser.add_argument('--pwquality', action="store_true", help='enable pam_pwquality.so module')

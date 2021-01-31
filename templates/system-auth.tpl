@@ -2,9 +2,6 @@ auth		required	pam_env.so {{ debug|default('', true) }}
 {% if pam_ssh %}
 auth		sufficient	pam_ssh.so
 {% endif %}
-{% if homed %}
--auth		sufficient	pam_systemd_home.so
-{% endif %}
 
 {% if krb5 %}
 auth		[success=3 default=ignore]      pam_krb5.so {{ krb5_params }}
@@ -23,9 +20,6 @@ auth		[default=die]	pam_faillock.so authfail
 auth		optional	pam_cap.so
 {% endif %}
 
-{% if homed %}
--account	sufficient	pam_systemd_home.so
-{% endif %}
 {% if krb5 %}
 account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
