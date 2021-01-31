@@ -8,8 +8,4 @@ session		optional	pam_mktemp.so
 session		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 
-{% if homed %}
-session         [success=1 default=ignore]      pam_systemd_home.so
-{% endif %}
-
 session		required	pam_unix.so {{ debug|default('', true) }}
