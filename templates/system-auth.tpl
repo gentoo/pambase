@@ -12,7 +12,7 @@ auth		requisite	pam_faillock.so preauth
 auth		[success=2 default=ignore]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 auth            [success=1 default=ignore]      pam_systemd_home.so
 {% else %}
-auth            [success=1 default=ignore]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pas
+auth            [success=1 default=ignore]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 {% endif %}
 auth		[default=die]	pam_faillock.so authfail
 
