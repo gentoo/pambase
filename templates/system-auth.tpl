@@ -11,7 +11,7 @@ auth		requisite	pam_faillock.so preauth
 {% if homed %}
 auth            [success=2 default=ignore]      pam_systemd_home.so
 {% endif %}
-auth            [success=1 default=ignore]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
+auth            [success=1 new_authtok_reqd=1 ignore=ignore default=bad]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
 auth		[default=die]	pam_faillock.so authfail
 
 {% if caps %}
