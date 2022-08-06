@@ -4,11 +4,11 @@ auth		include		system-auth
 
 account		required	pam_access.so {{ debug|default('', true) }}
 account		required	pam_nologin.so
-account         required        pam_time.so
+account		required	pam_time.so
 account		include		system-auth
 
 password	include		system-auth
-session         optional        pam_loginuid.so
+session		optional	pam_loginuid.so
 {% if selinux %}
 session		required	pam_selinux.so close
 {% endif %}
@@ -32,9 +32,9 @@ session		optional	pam_mail.so
 {% endif %}
 
 {% if systemd %}
--session        optional        pam_systemd.so
+-session	optional	pam_systemd.so
 {% endif %}
 
 {% if elogind %}
--session        optional        pam_elogind.so
+-session	optional	pam_elogind.so
 {% endif %}
