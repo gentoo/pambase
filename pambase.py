@@ -19,6 +19,7 @@ def main():
     parser.add_argument('--mktemp', action="store_true", help='enable pam_mktemp.so module')
     parser.add_argument('--pam-ssh', action="store_true", help='enable pam_ssh.so module')
     parser.add_argument('--securetty', action="store_true", help='enable pam_securetty.so module')
+    parser.add_argument('--sssd', action="store_true", help='enable sssd.so module')
     parser.add_argument('--yescrypt', action="store_true", help='enable yescrypt option for pam_unix.so module')
     parser.add_argument('--sha512', action="store_true", help='enable sha512 option for pam_unix.so module')
     parser.add_argument('--krb5', action="store_true", help='enable pam_krb5.so module')
@@ -41,7 +42,8 @@ def process_args(args):
         "unix_authtok",
         "unix_extended_encryption",
         "likeauth",
-        "nullok"
+        "nullok",
+        "local_users_only"
     ]
 
     # create a blank dictionary
@@ -61,6 +63,9 @@ def process_args(args):
 
     if args.krb5:
         output["krb5_params"] = "{0} ignore_root try_first_pass".format("debug").strip()
+
+    if args.sssd:
+        output["local_users_only"] = "local_users_only"
 
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"

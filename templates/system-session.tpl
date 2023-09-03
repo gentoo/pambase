@@ -13,3 +13,7 @@ session         [success=1 default=ignore]      pam_systemd_home.so
 {% endif %}
 
 session		required	pam_unix.so {{ debug|default('', true) }}
+
+{% if sssd %}
+session		optional	pam_sss.so {{ debug|default('', true) }}
+{% endif %}

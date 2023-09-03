@@ -7,34 +7,55 @@ auth		sufficient	pam_ssh.so
 auth		[success={{ 4 if homed else 3 }} default=ignore]      pam_krb5.so {{ krb5_params }}
 {% endif %}
 
+{% if sssd %}
+auth		[default=1 ignore=ignore success=ok]	pam_usertype.so isregular
+auth		[default=3 ignore=ignore success=ok]	pam_localuser.so
+{% endif %}
+
 auth		requisite	pam_faillock.so preauth
+
 {% if homed %}
 auth            [success=2 default=ignore]      pam_systemd_home.so
 {% endif %}
-auth            [success=1 new_authtok_reqd=1 ignore=ignore default=bad]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
-auth		[default=die]	pam_faillock.so authfail
 
+{% if sssd %}
+auth            sufficient    pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }}
+{% else %}
+auth            [success=1 new_authtok_reqd=1 ignore=ignore default=bad]      pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
+{% endif %}
+auth		[default=die]	pam_faillock.so authfail
+{% if sssd %}
+auth		sufficient	pam_sss.so forward_pass {{ debug|default('', true) }}
+{% endif %}
 {% if caps %}
 auth		optional	pam_cap.so
 {% endif %}
-
+{% if sssd %}
+auth		sufficient	pam_deny.so
+{% endif %}
 {% if krb5 %}
 account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 {% endif %}
 
 {% if homed %}
-account         [success=1 default=ignore]      pam_systemd_home.so
+account         [success={{ 2 if sssd else 1 }} default=ignore]      pam_systemd_home.so
 {% endif %}
 
 account		required	pam_unix.so {{ debug|default('', true) }}
 account         required        pam_faillock.so
+{% if sssd %}
+account		sufficient	pam_localuser.so
+account		sufficient	pam_usertype.so issystem
+account		[default=bad success=ok user_unknown=ignore] pam_sss.so {{ debug|default('', true) }}
+account		required	pam_permit.so
+{% endif %}
 
 {% if passwdqc %}
 password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
 {% endif %}
 
 {% if pwquality %}
-password        required        pam_pwquality.so
+password        required        pam_pwquality.so {{ local_users_only|default('', true ) }}
 {% endif %}
 
 {% if pwhistory %}
@@ -50,9 +71,14 @@ password        [success=1 default=ignore]      pam_systemd_home.so
 {% endif %}
 
 {% if passwdqc or pwquality %}
-password	required	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
 {% else %}
-password        required        pam_unix.so try_first_pass {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+password        {{ 'sufficient' if sssd else 'required' }}        pam_unix.so try_first_pass {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+{% endif %}
+
+{% if sssd %}
+password	sufficient	pam_sss.so use_authtok
+password	required	pam_deny.so
 {% endif %}
 
 {% if pam_ssh %}
