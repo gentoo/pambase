@@ -1,0 +1,14 @@
+auth		required	pam_shells.so
+auth		required	pam_nologin.so
+auth		include		system-auth
+account		required	pam_access.so
+account		required	pam_nologin.so
+account		required	pam_time.so
+account		include		system-auth
+password	include		system-auth
+session		optional	pam_loginuid.so
+session		required	pam_env.so envfile=/etc/profile.env
+session		optional	pam_lastlog.so silent
+session		include		system-auth
+session		optional	pam_motd.so motd=/etc/motd
+session		optional	pam_mail.so

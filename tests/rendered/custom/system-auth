@@ -1,0 +1,11 @@
+auth		required	pam_env.so
+auth		requisite	pam_faillock.so preauth
+auth            [success=1 default=ignore]      pam_unix.so nullok  try_first_pass
+auth		[default=die]	pam_faillock.so authfail
+account		required	pam_unix.so
+account         required        pam_faillock.so
+password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
+password	required	pam_unix.so try_first_pass use_authtok nullok sha512 shadow
+session		required	pam_limits.so
+session		required	pam_env.so
+session		required	pam_unix.so
