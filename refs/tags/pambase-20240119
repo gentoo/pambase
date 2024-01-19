@@ -1,0 +1,15 @@
+certificate version 0.1
+pusher Sam James <sam@gentoo.org> 1705642419 +0000
+pushee git+ssh://git.gentoo.org/proj/pambase.git
+nonce 1705642419-225c5fa140b471ca82b9d5a9a7735253b644ce4e
+
+0000000000000000000000000000000000000000 517e64701d40f39c04b2cc79202b1bf9fc7efa90 refs/tags/pambase-20240119
+-----BEGIN PGP SIGNATURE-----
+
+iOUEABYKAI0WIQQlpruI3Zt2TGtVQcJzhAn1IN+RkAUCZaoJs18UgAAAAAAuAChp
+c3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MjVB
+NkJCODhERDlCNzY0QzZCNTU0MUMyNzM4NDA5RjUyMERGOTE5MA8cc2FtQGdlbnRv
+by5vcmcACgkQc4QJ9SDfkZCAnwD/XxbgujbnnJ+hduf9axcG8a7c1aj7606kjEZD
++JSkb0gA/3e7vklZ75gvfcQmRnHfFHT/7swk0C5q0ue5tQXwtA0C
+=vC72
+-----END PGP SIGNATURE-----
