@@ -31,7 +31,7 @@ auth		sufficient	pam_sss.so forward_pass {{ debug|default('', true) }}
 auth		optional	pam_cap.so
 {% endif %}
 {% if sssd %}
-auth		sufficient	pam_deny.so
+auth		required	pam_deny.so
 {% endif %}
 {% if krb5 %}
 account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
