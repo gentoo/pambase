@@ -1,4 +1,6 @@
+{% if shells %}
 auth		required	pam_shells.so {{ debug|default('', true) }}
+{% endif %}
 auth		required	pam_nologin.so
 auth		include		system-auth
 
