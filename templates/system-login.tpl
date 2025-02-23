@@ -21,7 +21,7 @@ session		optional	pam_lastlog.so silent {{ debug|default('', true) }}
 {% endif %}
 session		include		system-auth
 {% if selinux %}
- # Note: modules that run in the user's context must come after this line.
+# Note: modules that run in the user's context must come after this line.
 session		required	pam_selinux.so multiple open
 {% endif %}
 
