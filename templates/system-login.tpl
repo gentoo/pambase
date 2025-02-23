@@ -18,7 +18,7 @@ session		required	pam_selinux.so close
 session		required	pam_env.so envfile=/etc/profile.env {{ debug|default('', true) }}
 session		include		system-auth
 {% if selinux %}
- # Note: modules that run in the user's context must come after this line.
+# Note: modules that run in the user's context must come after this line.
 session		required	pam_selinux.so multiple open
 {% endif %}
 
