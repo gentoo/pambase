@@ -16,9 +16,6 @@ session		required	pam_selinux.so close
 {% endif %}
 
 session		required	pam_env.so envfile=/etc/profile.env {{ debug|default('', true) }}
-{% if not minimal %}
-session		optional	pam_lastlog.so silent {{ debug|default('', true) }}
-{% endif %}
 session		include		system-auth
 {% if selinux %}
  # Note: modules that run in the user's context must come after this line.
@@ -27,9 +24,7 @@ session		required	pam_selinux.so multiple open
 
 {% if not minimal %}
 session		optional	pam_motd.so motd=/etc/motd
-{% endif %}
-
-{% if not minimal %}
+session		optional	pam_lastlog.so silent {{ debug|default('', true) }}
 session		optional	pam_mail.so
 {% endif %}
 
