@@ -12,6 +12,7 @@ def main():
     parser.add_argument('--passwdqc', action="store_true", help='enable pam_passwdqc.so module')
     parser.add_argument('--pwhistory', action="store_true", help='enable pam_pwhistory.so module')
     parser.add_argument('--pwquality', action="store_true", help='enable pam_pwquality.so module')
+    parser.add_argument('--openrc', action="store_true", help='enable pam_openrc.so module')
     parser.add_argument('--elogind', action="store_true", help='enable pam_elogind.so module')
     parser.add_argument('--systemd', action="store_true", help='enable pam_systemd.so module')
     parser.add_argument('--homed', action="store_true", help='enable pam_systemd_home.so module')
