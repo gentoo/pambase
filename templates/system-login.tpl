@@ -40,3 +40,7 @@ session		optional	pam_mail.so
 {% if elogind %}
 -session	optional	pam_elogind.so
 {% endif %}
+
+{% if openrc %}
+-session	optional	pam_openrc.so
+{% endif %}
