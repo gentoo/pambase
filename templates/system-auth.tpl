@@ -1,4 +1,4 @@
-auth		required	pam_env.so {{ debug|default('', true) }}
+auth		required	pam_env.so {{ debug }}
 {% if pam_ssh %}
 auth		sufficient	pam_ssh.so
 {% endif %}
@@ -19,13 +19,13 @@ auth		[success=2 default=ignore]	pam_systemd_home.so
 {% endif %}
 
 {% if sssd %}
-auth		sufficient	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }}
+auth		sufficient	pam_unix.so {{ nullok }} {{ debug }}
 {% else %}
-auth		[success=1 new_authtok_reqd=1 ignore=ignore default=bad]	pam_unix.so {{ nullok|default('', true) }} {{ debug|default('', true) }} try_first_pass
+auth		[success=1 new_authtok_reqd=1 ignore=ignore default=bad]	pam_unix.so {{ nullok }} {{ debug }} try_first_pass
 {% endif %}
 auth		[default=die]	pam_faillock.so authfail
 {% if sssd %}
-auth		sufficient	pam_sss.so forward_pass {{ debug|default('', true) }}
+auth		sufficient	pam_sss.so forward_pass {{ debug }}
 {% endif %}
 {% if caps %}
 auth		optional	pam_cap.so
@@ -41,12 +41,12 @@ account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
 account		[success={{ 2 if sssd else 1 }} default=ignore]	pam_systemd_home.so
 {% endif %}
 
-account		required	pam_unix.so {{ debug|default('', true) }}
+account		required	pam_unix.so {{ debug }}
 account		required	pam_faillock.so
 {% if sssd %}
 account		sufficient	pam_localuser.so
 account		sufficient	pam_usertype.so issystem
-account		[default=bad success=ok user_unknown=ignore]	pam_sss.so {{ debug|default('', true) }}
+account		[default=bad success=ok user_unknown=ignore]	pam_sss.so {{ debug }}
 account		required	pam_permit.so
 {% endif %}
 
@@ -71,9 +71,9 @@ password	[success=1 default=ignore]	pam_systemd_home.so
 {% endif %}
 
 {% if passwdqc or pwquality %}
-password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
 {% else %}
-password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ nullok|default('', true) }} {{ unix_extended_encryption|default('', true) }} {{ debug|default('', true) }}
+password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
 {% endif %}
 
 {% if sssd %}

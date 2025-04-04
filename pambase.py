@@ -65,11 +65,17 @@ def main():
         "--minimal", action="store_true", help="install minimalistic PAM stack"
     )
     parser.add_argument(
-        "--debug", action="store_true", help="enable debug for selected modules"
+        "--debug",
+        action="store_const",
+        const="debug",
+        default="",
+        help="enable debug for selected modules",
     )
     parser.add_argument(
         "--nullok",
-        action="store_true",
+        action="store_const",
+        const="nullok",
+        default="",
         help="enable nullok option for pam_unix.so module",
     )
 
@@ -88,7 +94,6 @@ def process_args(args):
         "unix_authtok",
         "unix_extended_encryption",
         "likeauth",
-        "nullok",
         "local_users_only",
     ]
 
@@ -100,12 +105,6 @@ def process_args(args):
     # unconditional variables
     output["likeauth"] = "likeauth"
     output["unix_authtok"] = "use_authtok"
-
-    if args.debug:
-        output["debug"] = "debug"
-
-    if args.nullok:
-        output["nullok"] = "nullok"
 
     if args.krb5:
         output["krb5_params"] = "{0} ignore_root try_first_pass".format("debug").strip()
