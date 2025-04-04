@@ -90,7 +90,6 @@ def process_args(args):
     pathlib.Path("stack").mkdir(parents=True, exist_ok=True)
 
     blank_variables = [
-        "krb5_authtok",
         "unix_authtok",
         "unix_extended_encryption",
         "likeauth",
