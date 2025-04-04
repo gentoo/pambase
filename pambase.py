@@ -90,7 +90,6 @@ def process_args(args):
     pathlib.Path("stack").mkdir(parents=True, exist_ok=True)
 
     blank_variables = [
-        "unix_authtok",
         "unix_extended_encryption",
     ]
 
@@ -98,9 +97,6 @@ def process_args(args):
     # then add in our parsed args
     output = dict.fromkeys(blank_variables, "")
     output.update(vars(args))
-
-    # unconditional variables
-    output["unix_authtok"] = "use_authtok"
 
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"

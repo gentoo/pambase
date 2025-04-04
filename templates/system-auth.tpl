@@ -71,7 +71,7 @@ password	[success=1 default=ignore]	pam_systemd_home.so
 {% endif %}
 
 {% if passwdqc or pwquality %}
-password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ unix_authtok|default('', true) }} {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
+password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass use_authtok {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
 {% else %}
 password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
 {% endif %}

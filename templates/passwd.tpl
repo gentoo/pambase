@@ -4,5 +4,5 @@ account		include		system-auth
 password	include		system-auth
 
 {% if gnome_keyring %}
-password	optional	pam_gnome_keyring.so {{ unix_authtok }}
+password	optional	pam_gnome_keyring.so use_authtok
 {% endif %}
