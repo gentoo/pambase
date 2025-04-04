@@ -51,14 +51,10 @@ def main():
     )
     parser.add_argument("--sssd", action="store_true", help="enable sssd.so module")
     parser.add_argument(
-        "--yescrypt",
-        action="store_true",
-        help="enable yescrypt option for pam_unix.so module",
-    )
-    parser.add_argument(
-        "--sha512",
-        action="store_true",
-        help="enable sha512 option for pam_unix.so module",
+        "--encrypt",
+        choices=["md5", "sha256", "sha512", "blowfish", "gost_yescrypt", "yescrypt"],
+        default="md5",
+        help="select encryption to use for passwords stored by pam_unix.so module",
     )
     parser.add_argument("--krb5", action="store_true", help="enable pam_krb5.so module")
     parser.add_argument(
@@ -90,13 +86,6 @@ def process_args(args):
     pathlib.Path("stack").mkdir(parents=True, exist_ok=True)
 
     output = vars(args)
-
-    if args.yescrypt:
-        output["unix_extended_encryption"] = "yescrypt shadow"
-    elif args.sha512:
-        output["unix_extended_encryption"] = "sha512 shadow"
-    else:
-        output["unix_extended_encryption"] = "md5 shadow"
 
     return output
 

@@ -70,11 +70,7 @@ password	[success=1 default=ignore]	pam_krb5.so {{ debug }} ignore_root try_firs
 password	[success=1 default=ignore]	pam_systemd_home.so
 {% endif %}
 
-{% if passwdqc or pwquality %}
-password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass use_authtok {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
-{% else %}
-password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass {{ nullok }} {{ unix_extended_encryption|default('', true) }} {{ debug }}
-{% endif %}
+password	{{ 'sufficient' if sssd else 'required' }}	pam_unix.so try_first_pass shadow {% if passwdqc or pwquality %}use_authtok{% endif %} {{ nullok }} {{ encrypt }} {{ debug }}
 
 {% if sssd %}
 password	sufficient	pam_sss.so use_authtok

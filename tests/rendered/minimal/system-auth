@@ -4,7 +4,7 @@ auth		[success=1 new_authtok_reqd=1 ignore=ignore default=bad]	pam_unix.so   try
 auth		[default=die]	pam_faillock.so authfail
 account		required	pam_unix.so
 account		required	pam_faillock.so
-password	required	pam_unix.so try_first_pass  md5 shadow
+password	required	pam_unix.so try_first_pass shadow   md5
 session		required	pam_limits.so
 session		required	pam_env.so
 session		required	pam_unix.so
