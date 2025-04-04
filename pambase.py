@@ -89,14 +89,7 @@ def process_args(args):
     # make sure that output directory exists
     pathlib.Path("stack").mkdir(parents=True, exist_ok=True)
 
-    blank_variables = [
-        "unix_extended_encryption",
-    ]
-
-    # create a blank dictionary
-    # then add in our parsed args
-    output = dict.fromkeys(blank_variables, "")
-    output.update(vars(args))
+    output = vars(args)
 
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"
