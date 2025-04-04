@@ -94,7 +94,6 @@ def process_args(args):
         "unix_authtok",
         "unix_extended_encryption",
         "likeauth",
-        "local_users_only",
     ]
 
     # create a blank dictionary
@@ -108,9 +107,6 @@ def process_args(args):
 
     if args.krb5:
         output["krb5_params"] = "{0} ignore_root try_first_pass".format("debug").strip()
-
-    if args.sssd:
-        output["local_users_only"] = "local_users_only"
 
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"

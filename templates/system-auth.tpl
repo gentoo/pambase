@@ -55,7 +55,7 @@ password	required	pam_passwdqc.so config=/etc/security/passwdqc.conf
 {% endif %}
 
 {% if pwquality %}
-password	required	pam_pwquality.so {{ local_users_only|default('', true ) }}
+password	required	pam_pwquality.so {% if sssd %}local_users_only{% endif %}
 {% endif %}
 
 {% if pwhistory %}
