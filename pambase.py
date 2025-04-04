@@ -105,7 +105,7 @@ def process_args(args):
     output["unix_authtok"] = "use_authtok"
 
     if args.krb5:
-        output["krb5_params"] = "{0} ignore_root try_first_pass".format("debug").strip()
+        output["krb5_params"] = f"{args.debug} ignore_root try_first_pass"
 
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"
