@@ -92,7 +92,6 @@ def process_args(args):
     blank_variables = [
         "unix_authtok",
         "unix_extended_encryption",
-        "likeauth",
     ]
 
     # create a blank dictionary
@@ -101,7 +100,6 @@ def process_args(args):
     output.update(vars(args))
 
     # unconditional variables
-    output["likeauth"] = "likeauth"
     output["unix_authtok"] = "use_authtok"
 
     if args.yescrypt:
