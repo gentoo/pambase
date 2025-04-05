@@ -4,7 +4,8 @@ auth		sufficient	pam_ssh.so
 {% endif %}
 
 {% if krb5 %}
-auth		[success={{ 4 if homed else 3 }} default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
+auth		[success=ok default=1]	pam_krb5.so {{ debug }} ignore_root try_first_pass
+auth		[default={{ 3 + homed + (sssd * 3) }}]	pam_permit.so
 {% endif %}
 
 {% if sssd %}
