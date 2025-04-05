@@ -5,7 +5,7 @@ session		optional	pam_mktemp.so
 {% endif %}
 
 {%if krb5 %}
-session		[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
+session		[success=1 default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
 {% endif %}
 
 {% if homed %}

@@ -4,7 +4,7 @@ auth		sufficient	pam_ssh.so
 {% endif %}
 
 {% if krb5 %}
-auth		[success={{ 4 if homed else 3 }} default=ignore]	pam_krb5.so {{ krb5_params }}
+auth		[success={{ 4 if homed else 3 }} default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
 {% endif %}
 
 {% if sssd %}
@@ -34,7 +34,7 @@ auth		optional	pam_cap.so
 auth		required	pam_deny.so
 {% endif %}
 {% if krb5 %}
-account		[success=2 default=ignore]	pam_krb5.so {{ krb5_params }}
+account		[success=2 default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
 {% endif %}
 
 {% if homed %}
@@ -63,7 +63,7 @@ password	required	pam_pwhistory.so use_authtok remember=5 retry=3
 {% endif %}
 
 {% if krb5 %}
-password	[success=1 default=ignore]	pam_krb5.so {{ krb5_params }}
+password	[success=1 default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
 {% endif %}
 
 {% if homed %}

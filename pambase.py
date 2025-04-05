@@ -104,9 +104,6 @@ def process_args(args):
     output["likeauth"] = "likeauth"
     output["unix_authtok"] = "use_authtok"
 
-    if args.krb5:
-        output["krb5_params"] = f"{args.debug} ignore_root try_first_pass"
-
     if args.yescrypt:
         output["unix_extended_encryption"] = "yescrypt shadow"
     elif args.sha512:
