@@ -3,6 +3,9 @@ auth		required	pam_shells.so {{ debug }}
 {% endif %}
 auth		required	pam_nologin.so
 auth		include		system-auth
+{% if gnome_keyring %}
+-auth		optional	pam_gnome_keyring.so
+{% endif %}
 
 account		required	pam_access.so {{ debug }}
 account		required	pam_nologin.so
@@ -35,7 +38,9 @@ session		optional	pam_mail.so
 {% if elogind %}
 -session	optional	pam_elogind.so
 {% endif %}
-
+{% if gnome_keyring %}
+-session	optional	pam_gnome_keyring.so auto_start
+{% endif %}
 {% if openrc %}
 -session	optional	pam_openrc.so
 {% endif %}
