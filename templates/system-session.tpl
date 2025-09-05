@@ -1,8 +1,8 @@
 session		required	pam_limits.so {{ debug }}
-session		required	pam_env.so {{ debug }}
 {% if mktemp %}
 session		optional	pam_mktemp.so
 {% endif %}
+session		required	pam_env.so {{ debug }}
 
 {%if krb5 %}
 session		[success=1 default=ignore]	pam_krb5.so {{ debug }} ignore_root try_first_pass
