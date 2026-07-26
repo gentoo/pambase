@@ -49,6 +49,9 @@ def main():
     parser.add_argument(
         "--shells", action="store_true", help="enable pam_shells.so module"
     )
+    parser.add_argument(
+        "--turnstile", action="store_true", help="enable pam_turnstile.so module"
+    )
     parser.add_argument("--sssd", action="store_true", help="enable sssd.so module")
     parser.add_argument(
         "--encrypt",

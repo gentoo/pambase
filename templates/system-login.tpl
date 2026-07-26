@@ -39,3 +39,7 @@ session		optional	pam_mail.so
 {% if openrc %}
 -session	optional	pam_openrc.so
 {% endif %}
+
+{% if turnstile %}
+-session	optional	pam_turnstile.so
+{% endif %}
