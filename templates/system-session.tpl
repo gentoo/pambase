@@ -17,3 +17,7 @@ session		required	pam_unix.so {{ debug }}
 {% if sssd %}
 session		optional	pam_sss.so {{ debug }}
 {% endif %}
+
+{% if winbind %}
+session		optional	pam_winbind.so {{ debug }}
+{% endif %}

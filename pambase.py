@@ -54,6 +54,9 @@ def main():
     )
     parser.add_argument("--sssd", action="store_true", help="enable sssd.so module")
     parser.add_argument(
+        "--winbind", action="store_true", help="enable pam_winbind.so module"
+    )
+    parser.add_argument(
         "--encrypt",
         choices=["md5", "sha256", "sha512", "blowfish", "gost_yescrypt", "yescrypt"],
         default="md5",
